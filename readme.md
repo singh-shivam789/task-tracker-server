@@ -30,7 +30,7 @@ Task Tracker is an Express-based server designed to handle CRUD operations for a
 ### 3. Delete a Task by ID
 **Endpoint:**"http://localhost:3000/posts/:id"  
 **Method:** DELETE  
-**Description:** Delete a task with the specified \`:id\`.  
+**Description:** Delete a task with the specified `:id`.  
 **Response:** Confirms deletion.
 
 ---
@@ -38,46 +38,46 @@ Task Tracker is an Express-based server designed to handle CRUD operations for a
 ### 4. Update a Task by ID
 **Endpoint:** "http://localhost:3000/posts/:id"  
 **Method:** PUT  
-**Description:** Modify the task value/name for the task with the specified \`:id\`.  
+**Description:** Modify the task value/name for the task with the specified `:id`.  
 **Request Body:** JSON object containing updated task data.  
 
 ---
 
 ## Request Logging
-The server logs all incoming requests to log files stored in the \`/public/logger/logs\` directory. Logs are written in the following format:
+The server logs all incoming requests to log files stored in the `/public/logger/logs` directory. Logs are written in the following format:
 
-\`\`\`
+```
 DD/MM/YYYY, HH:MM:SS am/pm-localhost:3000/<endpoint>-<HTTP_METHOD>
-\`\`\`
+```
 
 ### Example Log Entry:
-\`\`\`
+```
 16/11/2024, 1:39:23 am-localhost:3000/-GET
-\`\`\`
+```
 
-Each log file is named as \`UTCDATE_server_log_file.txt\`.
+Each log file is named as `UTCDATE_server_log_file.txt`.
 
 ## Setup Instructions
 
 1. Clone the repository:
-   \`\`\`bash
-   git clone [https://github.com/your-repo/task-tracker.git](https://github.com/singh-shivam789/task-tracker-server)
+   ```bash
+   git clone https://github.com/singh-shivam789/task-tracker-server/
    cd task-tracker
-   \`\`\`
+   ```
 
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Create a .env file in the root directory and add any port like this: PORT = 3000
 
 4. Start the server:
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
 
-5. Server will run on \`http://localhost:PORT\`.
+5. Server will run on `http://localhost:PORT`.
 
 task-tracker/
 ├── public/                           # Public directory
