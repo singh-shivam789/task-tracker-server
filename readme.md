@@ -1,7 +1,7 @@
 # Task Tracker - Express CRUD Server
 
 Task Tracker is an Express-based server designed to handle CRUD operations for a React-based frontend application. The server provides APIs for managing tasks and logs request details into organized log files.
-
+![alt text](image.png)
 ## Features
 - Fetch all tasks
 - Create new tasks
