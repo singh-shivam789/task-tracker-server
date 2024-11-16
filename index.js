@@ -1,6 +1,6 @@
 import homeRouter from './public/config/router/home.js';
 import taskRouter from './public/config/router/task.js';
-import logger from './public/logger/Logger.js';
+import logger from './public/config/logger/Logger.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -25,3 +25,4 @@ app.listen(PORT, () => {
 
 app.use('/task', logger, taskRouter);
 app.use('/', logger, homeRouter);
+

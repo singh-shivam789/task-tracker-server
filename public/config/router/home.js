@@ -1,5 +1,5 @@
 import express from 'express';
-import file from '../../data/file.js';
+import file from '../data/file.js';
 const homeRouter = express.Router();
 
 homeRouter.get('/', (req, res) => {
