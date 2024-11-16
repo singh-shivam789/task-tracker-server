@@ -1,6 +1,8 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
-const uri = "mongodb+srv://shivamsingh99:GTr7SExnQ3VHOKS3@dev-mongo-cluster-1.fc5mj.mongodb.net/?retryWrites=true&w=majority&appName=dev-mongo-cluster-1";
+import dotenv from 'dotenv'
+dotenv.config();
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@dev-mongo-cluster-1.fc5mj.mongodb.net/?retryWrites=true&w=majority&appName=dev-mongo-cluster-1`;
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -13,7 +15,7 @@ const client = new MongoClient(uri, {
 let db;
 try {
     client.connect().then(
-        db = client.db("test").collection("test")
+        db = client.db(process.env.DB_NAME).collection(process.env.COLLECTION_NAME)
     ).catch(err => {
         throw err;
     }).finally(
