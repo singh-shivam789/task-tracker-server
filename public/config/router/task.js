@@ -1,18 +1,17 @@
 import express from 'express';
-import file from '../data/file.js';
+import db from '../db/db_config.js';
+import { ObjectId } from 'mongodb';
 const taskRouter = express.Router();
 
-taskRouter.post('/', (req, res) => {
+taskRouter.post('/', async (req, res) => {
     try {
         let reqData = req.body.data;
-        reqData.id = file.globalId;
-        file.globalId++;
-        file.data.push(reqData);
+        let dbRes = await db.insertOne(reqData);
         return res.send({
             code: 200,
             message: "successfully added!",
             data: {
-                id: reqData.id
+                id: dbRes.insertedId.toString()
             }
         });
     } catch (err) {
@@ -25,10 +24,9 @@ taskRouter.post('/', (req, res) => {
 
 });
 
-taskRouter.delete('/:id', (req, res) => {
+taskRouter.delete('/:id', async (req, res) => {
     try {
-        const id = req.params.id;
-        file.data = file.data.filter((item) => item.id != id);
+        await db.deleteOne({ _id: new ObjectId(req.params.id) });
         return res.json({
             code: 200,
             message: "successfully deleted!",
@@ -43,15 +41,15 @@ taskRouter.delete('/:id', (req, res) => {
 
 });
 
-taskRouter.put('/:id', (req, res) => {
+taskRouter.put('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const newData = req.body.data;
-        file.data.forEach((task) => {
-            if (task.id == id) {
-                task.task = newData
+        await db.updateOne({ _id: new ObjectId(id) }, {
+            $set: {
+                task: newData
             }
-        })
+        }, { upsert: false });
         return res.json({
             code: 200,
             message: "Successfully edited!"

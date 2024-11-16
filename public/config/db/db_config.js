@@ -16,7 +16,9 @@ try {
         db = client.db("test").collection("test")
     ).catch(err => {
         throw err;
-    })
+    }).finally(
+        await client.close()
+    )
 } catch (error) {
     console.log(error);
 }
